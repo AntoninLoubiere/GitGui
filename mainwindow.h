@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include <QString>
+
 namespace Ui {
 class MainWindow;
 }
@@ -15,8 +17,14 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+
+    //void onChooseFileTextChanged(QString);
+
 private:
-    Ui::MainWindow *ui;
+    //void updateFileChooseAddCompleter(QString path);
+
+    Ui::MainWindow *m_ui;
 };
 
 #endif // MAINWINDOW_H
