@@ -3,6 +3,10 @@
 
 #include "statusgetter.h"
 
+#include <QWidget>
+#include <QTableWidget>
+#include <QApplication>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     m_ui(new Ui::MainWindow)
@@ -17,14 +21,30 @@ MainWindow::~MainWindow()
     delete m_ui;
 }
 
-void MainWindow::connectWidget()
+QWidget* MainWindow::getCurrentTabWidget()
 {
-    connect(m_ui->updateStatusButton, SIGNAL(clicked()), this, SLOT(onUpdateStatutButtonClicked()));
+    return m_ui->tabWidget->currentWidget();
 }
 
-void MainWindow::onUpdateStatutButtonClicked()
+
+void MainWindow::connectWidget()
+{
+    connect(m_ui->updateStatusButton, SIGNAL(clicked()), this, SLOT(updateStatusText()));
+    connect(m_ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(testIfDoUpdate()));
+}
+
+// slot
+
+void MainWindow::updateStatusText()
 {
     StatusGetter statutGetter;
 
     m_ui->statusPlainTextEdit->document()->setPlainText(statutGetter.getBrutStatus());
+}
+
+void MainWindow::testIfDoUpdate()
+{
+    if (getCurrentTabWidget() == m_ui->tabWidget->widget(2)) {
+        updateStatusText();
+    }
 }

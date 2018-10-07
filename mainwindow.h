@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTabWidget>
 
 #include <QString>
 
@@ -17,8 +18,11 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    QWidget* getCurrentTabWidget();
+
 public slots:
-    void onUpdateStatutButtonClicked();
+    void updateStatusText();
+    void testIfDoUpdate();
 
 private:
     void connectWidget();
