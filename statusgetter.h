@@ -10,9 +10,10 @@ public:
     StatusGetter();
     ~StatusGetter();
 
-    void runStatusCommand();
+    QString getBrutStatus();
 
 private:
+    void runStatusCommand();
 
     const QString m_command;
 };

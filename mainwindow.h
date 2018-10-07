@@ -18,8 +18,11 @@ public:
     ~MainWindow();
 
 public slots:
+    void onUpdateStatutButtonClicked();
 
 private:
+    void connectWidget();
+
     Ui::MainWindow *m_ui;
 };
 

@@ -3,6 +3,8 @@
 
 #include <QString>
 
+#define NAME_REPONSE_COMMAND_FILE "reponse.txt"
+
 class CommandExecutor
 {
 public:
