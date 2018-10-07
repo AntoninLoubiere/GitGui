@@ -19,11 +19,7 @@ public:
 
 public slots:
 
-    //void onChooseFileTextChanged(QString);
-
 private:
-    //void updateFileChooseAddCompleter(QString path);
-
     Ui::MainWindow *m_ui;
 };
 
