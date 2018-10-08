@@ -1,9 +1,9 @@
-#include "mainwindow.h"
+#include "main_window.h"
 #include <QApplication>
 
 #include <QDebug>
 
-#include <statusgetter.h>
+#include <status_getter.h>
 
 int main(int argc, char *argv[])
 {

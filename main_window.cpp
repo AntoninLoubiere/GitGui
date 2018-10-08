@@ -1,7 +1,7 @@
-#include "mainwindow.h"
+#include "main_window.h"
 #include "ui_mainwindow.h"
 
-#include "statusgetter.h"
+#include "status_getter.h"
 
 #include <QWidget>
 #include <QTableWidget>

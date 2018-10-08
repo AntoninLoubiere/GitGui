@@ -1,6 +1,6 @@
-#include "statusgetter.h"
+#include "status_getter.h"
 
-#include <commandexecutor.h>
+#include <command_executor.h>
 
 #include <fstream>
 #include <iostream>

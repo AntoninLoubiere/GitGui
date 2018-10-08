@@ -26,14 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    statusgetter.cpp \
-    commandexecutor.cpp
+    log_getter.cpp \
+    command_executor.cpp \
+    status_getter.cpp \
+    main_window.cpp
 
 HEADERS += \
-        mainwindow.h \
-    statusgetter.h \
-    commandexecutor.h
+    log_getter.h \
+    main_window.h \
+    status_getter.h \
+    command_executor.h
 
 FORMS += \
         mainwindow.ui

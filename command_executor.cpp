@@ -1,4 +1,4 @@
-#include "commandexecutor.h"
+#include "command_executor.h"
 
 #include <QDir>
 
