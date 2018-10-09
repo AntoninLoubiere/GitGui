@@ -8,7 +8,7 @@ class StatusGetter : CommandExecutor
 {
 public:
     StatusGetter();
-    ~StatusGetter();
+    virtual ~StatusGetter();
 
     QString getBrutStatus();
 

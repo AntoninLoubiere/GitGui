@@ -22,6 +22,7 @@ public:
 
 public slots:
     void updateStatusText();
+    void updateLogText();
     void testIfDoUpdate();
 
 private:

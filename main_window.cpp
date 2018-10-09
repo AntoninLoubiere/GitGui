@@ -1,7 +1,8 @@
 #include "main_window.h"
-#include "ui_mainwindow.h"
+#include "ui_main_window.h"
 
 #include "status_getter.h"
+#include "log_getter.h"
 
 #include <QWidget>
 #include <QTableWidget>
@@ -30,10 +31,21 @@ QWidget* MainWindow::getCurrentTabWidget()
 void MainWindow::connectWidget()
 {
     connect(m_ui->updateStatusButton, SIGNAL(clicked()), this, SLOT(updateStatusText()));
+    connect(m_ui->updateLogButton, SIGNAL(clicked()), this, SLOT(updateLogText()));
+
     connect(m_ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(testIfDoUpdate()));
 }
 
 // slot
+
+void MainWindow::testIfDoUpdate()
+{
+    if (getCurrentTabWidget() == m_ui->tabWidget->widget(2)) { // test if the current widget is the 2 widget (status)
+        updateStatusText();
+    } else if (getCurrentTabWidget() == m_ui->tabWidget->widget(3)) { // idem but 3 is log
+        updateLogText();
+    }
+}
 
 void MainWindow::updateStatusText()
 {
@@ -42,9 +54,9 @@ void MainWindow::updateStatusText()
     m_ui->statusPlainTextEdit->document()->setPlainText(statutGetter.getBrutStatus());
 }
 
-void MainWindow::testIfDoUpdate()
+void MainWindow::updateLogText()
 {
-    if (getCurrentTabWidget() == m_ui->tabWidget->widget(2)) {
-        updateStatusText();
-    }
+    LogGetter logGetter;
+
+    m_ui->logPlainTextEdit->document()->setPlainText(logGetter.getBrutLog());
 }
