@@ -3,6 +3,7 @@
 
 #include "status_getter.h"
 #include "log_getter.h"
+#include "branch_getter.h"
 
 #include <QWidget>
 #include <QTableWidget>
@@ -32,6 +33,7 @@ void MainWindow::connectWidget()
 {
     connect(m_ui->updateStatusButton, SIGNAL(clicked()), this, SLOT(updateStatusText()));
     connect(m_ui->updateLogButton, SIGNAL(clicked()), this, SLOT(updateLogText()));
+    connect(m_ui->updateBranchButton, SIGNAL(clicked()), this, SLOT(updateBranchText()));
 
     connect(m_ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(testIfDoUpdate()));
 }
@@ -44,6 +46,8 @@ void MainWindow::testIfDoUpdate()
         updateStatusText();
     } else if (getCurrentTabWidget() == m_ui->tabWidget->widget(3)) { // idem but 3 is log
         updateLogText();
+    } else if (getCurrentTabWidget() == m_ui->tabWidget->widget((4))) { // idem but 4 is branch
+        updateBranchText();
     }
 }
 
@@ -59,4 +63,11 @@ void MainWindow::updateLogText()
     LogGetter logGetter;
 
     m_ui->logPlainTextEdit->document()->setPlainText(logGetter.getBrutLog());
+}
+
+void MainWindow::updateBranchText()
+{
+    BranchGetter branchGetter;
+
+    m_ui->branchPlainTextEdit->document()->setPlainText(branchGetter.getBrutBranch());
 }

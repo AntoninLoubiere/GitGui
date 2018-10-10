@@ -23,6 +23,7 @@ public:
 public slots:
     void updateStatusText();
     void updateLogText();
+    void updateBranchText();
     void testIfDoUpdate();
 
 private:

@@ -29,13 +29,15 @@ SOURCES += \
     log_getter.cpp \
     command_executor.cpp \
     status_getter.cpp \
-    main_window.cpp
+    main_window.cpp \
+    branch_getter.cpp
 
 HEADERS += \
     log_getter.h \
     main_window.h \
     status_getter.h \
-    command_executor.h
+    command_executor.h \
+    branch_getter.h
 
 FORMS += \
     main_window.ui
