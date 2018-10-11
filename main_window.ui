@@ -69,7 +69,10 @@
         <item row="2" column="0">
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="0" column="0">
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="addFileAddButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="toolTip">
              <string>Ajoute un fichier.</string>
             </property>
@@ -83,10 +86,16 @@
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mettre le nom du fichier.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string/>
+            </property>
            </widget>
           </item>
           <item row="0" column="3">
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="chooseFileAddButton">
             <property name="toolTip">
              <string>Chosir un fichier.</string>
             </property>

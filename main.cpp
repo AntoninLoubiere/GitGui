@@ -5,6 +5,7 @@
 
 #include <status_getter.h>
 
+#ifdef Q_OS_UNIX
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -13,3 +14,4 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
+#endif
