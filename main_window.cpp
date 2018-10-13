@@ -131,7 +131,7 @@ void MainWindow::onChooseFileAddButtonClicked()
     QString filePath(QFileDialog::getOpenFileName(this, QString(), m_gitDirectory.path()));
     std::string filePathString(filePath.toStdString());
 
-    if (!filePath.contains(m_gitDirectory.path())) {
+    if (filePath != "" && !filePath.contains(m_gitDirectory.path())) {
         QString errorMessage;
         errorMessage = "Le fichier: ";
         errorMessage += QFileInfo(filePath).baseName();
