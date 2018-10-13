@@ -141,9 +141,9 @@ void MainWindow::onChooseFileAddButtonClicked()
         errorMessage += "\n";
         errorMessage += "Merci de bien vouloir reselectioner un fichier dans le répertoire du projet";
         QMessageBox::critical(this, "Erreur", errorMessage);
+    } else {
+        m_ui->chooseFileAddLineEdit->setText(filePath.right(filePath.size() - (m_gitDirectory.path().size() + 1)));
     }
-
-    m_ui->chooseFileAddLineEdit->setText(filePath.right(filePath.size() - (m_gitDirectory.path().size() + 1)));
 }
 
 void MainWindow::updateChooseFileAddLabelColor()
