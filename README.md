@@ -18,4 +18,4 @@ Just me: @AntoninLoubiere
  
  
  
-__**PyJaC++ / AntoninLoubiere - Thanto (@ThantoTeam)**__
+**PyJaC++ / AntoninLoubiere - Thanto (@ThantoTeam)**
