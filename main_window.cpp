@@ -1,9 +1,7 @@
 #include "main_window.h"
 #include "ui_main_window.h"
 
-#include "git/status_getter.h"
-#include "git/log_getter.h"
-#include "git/branch_getter.h"
+#include "git/git.h"
 
 #include <system_error>
 #include <string>
@@ -21,7 +19,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    m_ui(new Ui::MainWindow)
+    m_ui(new Ui::MainWindow),
+    m_git()
 {
     m_ui->setupUi(this);
 
@@ -82,12 +81,12 @@ void MainWindow::setGitDirectory(const QDir& gitDir)
 
 // getter
 
-QWidget* MainWindow::getCurrentTabWidget() const
+QWidget* MainWindow::currentTabWidget() const
 {
     return m_ui->tabWidget->currentWidget();
 }
 
-QDir MainWindow::getGitDirectory() const
+QDir MainWindow::gitDirectory() const
 {
     return m_gitDirectory;
 }
@@ -96,34 +95,28 @@ QDir MainWindow::getGitDirectory() const
 
 void MainWindow::testIfDoUpdate()
 {
-    if (getCurrentTabWidget() == m_ui->tabWidget->widget(2)) { // test if the current widget is the 2 widget (status)
+    if (currentTabWidget() == m_ui->tabWidget->widget(2)) { // test if the current widget is the 2 widget (status)
         updateStatusText();
-    } else if (getCurrentTabWidget() == m_ui->tabWidget->widget(3)) { // idem but 3 is log
+    } else if (currentTabWidget() == m_ui->tabWidget->widget(3)) { // idem but 3 is log
         updateLogText();
-    } else if (getCurrentTabWidget() == m_ui->tabWidget->widget((4))) { // idem but 4 is branch
+    } else if (currentTabWidget() == m_ui->tabWidget->widget((4))) { // idem but 4 is branch
         updateBranchText();
     }
 }
 
 void MainWindow::updateStatusText()
 {
-    StatusGetter statutGetter;
-
-    m_ui->statusPlainTextEdit->document()->setPlainText(statutGetter.getBrutStatus());
+    m_ui->statusPlainTextEdit->document()->setPlainText(m_git.getBrutStatus());
 }
 
 void MainWindow::updateLogText()
 {
-    LogGetter logGetter;
-
-    m_ui->logPlainTextEdit->document()->setPlainText(logGetter.getBrutLog());
+    m_ui->logPlainTextEdit->document()->setPlainText(m_git.getBrutLog());
 }
 
 void MainWindow::updateBranchText()
 {
-    BranchGetter branchGetter;
-
-    m_ui->branchPlainTextEdit->document()->setPlainText(branchGetter.getBrutBranch());
+    m_ui->branchPlainTextEdit->document()->setPlainText(m_git.getBrutBranch());
 }
 
 void MainWindow::onChooseFileAddButtonClicked()

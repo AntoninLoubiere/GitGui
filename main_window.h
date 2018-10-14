@@ -7,6 +7,8 @@
 #include <QString>
 #include <QDir>
 
+#include "git/git.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -24,8 +26,8 @@ public:
     void setGitDirectory(const QDir& dirGit);
 
     // getter
-    QWidget* getCurrentTabWidget() const;
-    QDir getGitDirectory() const;
+    QWidget* currentTabWidget() const;
+    QDir gitDirectory() const;
 
 public slots:
     void updateStatusText();
@@ -35,7 +37,7 @@ public slots:
     void testIfDoUpdate();
 
     // buttons
-    void  onChooseFileAddButtonClicked();
+    void onChooseFileAddButtonClicked();
 
     void updateChooseFileAddLabelColor();
 
@@ -47,6 +49,8 @@ private:
     Ui::MainWindow *m_ui;
 
     QDir m_gitDirectory;
+
+    Git m_git;
 };
 
 #endif // MAINWINDOW_H
