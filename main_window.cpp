@@ -1,9 +1,9 @@
 #include "main_window.h"
 #include "ui_main_window.h"
 
-#include "status_getter.h"
-#include "log_getter.h"
-#include "branch_getter.h"
+#include "git/status_getter.h"
+#include "git/log_getter.h"
+#include "git/branch_getter.h"
 
 #include <system_error>
 #include <string>

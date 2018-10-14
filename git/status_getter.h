@@ -2,7 +2,7 @@
 #define STATUSGETTER_H
 
 #include <QString>
-#include <command_executor.h>
+#include "command_executor.h"
 
 class StatusGetter : CommandExecutor
 {

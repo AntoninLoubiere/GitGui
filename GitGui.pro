@@ -25,19 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-    log_getter.cpp \
-    command_executor.cpp \
-    status_getter.cpp \
+    git/branch_getter.cpp \
+    git/command_executor.cpp \
+    git/log_getter.cpp \
+    git/status_getter.cpp \
+    main.cpp \
     main_window.cpp \
-    branch_getter.cpp
+    git/git.cpp
 
 HEADERS += \
-    log_getter.h \
+    git/branch_getter.h \
+    git/command_executor.h \
+    git/log_getter.h \
+    git/status_getter.h \
     main_window.h \
-    status_getter.h \
-    command_executor.h \
-    branch_getter.h
+    git/git.h
+
 
 FORMS += \
     main_window.ui
