@@ -1,37 +1,21 @@
-## Welcome to GitHub Pages
+# GitGUI
 
-You can use the [editor on GitHub](https://github.com/AntoninLoubiere/GitGui/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### What is it ?
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+GitGUI is a program to help you to send your code on github or use it whith git.
 
-### Markdown
+### How can use then ?
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+When the first relase come ! But for the moment is it only on Linux :(. But if you help me to traduce then to Windows you can download then to linux !
 
-```markdown
-Syntax highlighted code block
+### Who program it ?
 
-# Header 1
-## Header 2
-### Header 3
+Just me: @AntoninLoubiere
 
-- Bulleted
-- List
+### What is the advencement ?
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/AntoninLoubiere/GitGui/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+ - On 14 october 2018: You can see status, log and branch in brut text and can choose wich file you would add.
+ 
+ 
+ 
+**PyJaC++ / AntoninLoubiere - Thanto (@ThantoTeam)**
