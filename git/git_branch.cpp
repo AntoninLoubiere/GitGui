@@ -1,20 +1,20 @@
-#include "branch_getter.h"
+#include "git_branch.h"
 
 #include "command_executor.h"
 
 #include <iostream>
 #include <fstream>
 
-BranchGetter::BranchGetter() :
+GitBranch::GitBranch() :
     m_command("cd /home/antonin/Documents/Qt/GitGui && git branch")
 {
 }
 
-BranchGetter::~BranchGetter()
+GitBranch::~GitBranch()
 {
 }
 
-QString BranchGetter::getBrutBranch()
+QString GitBranch::getBrutBranch()
 {
     runBranchCommand();
     std::ifstream branchFileReader(NAME_REPONSE_COMMAND_FILE);
@@ -30,7 +30,7 @@ QString BranchGetter::getBrutBranch()
     return fileString;
 }
 
-void BranchGetter::runBranchCommand()
+void GitBranch::runBranchCommand()
 {
     executeCommand(m_command);
 }

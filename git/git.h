@@ -1,35 +1,40 @@
-#ifndef GIT_H
+﻿#ifndef GIT_H
 #define GIT_H
 
-#include "log_getter.h"
-#include "status_getter.h"
-#include "branch_getter.h"
+#include "git_log.h"
+#include "git_status.h"
+#include "git_branch.h"
 
 #include <QString>
+#include <QDir>
 
 class Git
 {
 public:
     Git();
+    Git(QDir pathGitDir);
 
     QString getBrutLog();
     QString getBrutStatus();
     QString getBrutBranch();
 
-
+    // setter
+    void setDir(const QDir &gitDir);
+    void setDir(const QString& pathGitDir);
 
     // getter
-    LogGetter* logGetter();
-    StatusGetter* statusGetter();
-    BranchGetter* branchGetter();
+    GitLog* gitLog();
+    GitStatus* gitStatus();
+    GitBranch* gitBranch();
 
-private:
+    QDir gitDir();
 
-    LogGetter m_logGetter;
-    StatusGetter m_statusGetter;
-    BranchGetter m_branchGetter;
+private:    
+    GitLog m_gitLog;
+    GitStatus m_gitStatus;
+    GitBranch m_gitBranch;
 
-    QDir gitPath;
+    QDir m_gitDir;
 };
 
 #endif // GIT_H

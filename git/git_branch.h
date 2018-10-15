@@ -5,11 +5,11 @@
 
 #include <QString>
 
-class BranchGetter : public CommandExecutor
+class GitBranch : public CommandExecutor
 {
 public:
-    BranchGetter();
-    virtual ~BranchGetter();
+    GitBranch();
+    virtual ~GitBranch();
 
     QString getBrutBranch();
 

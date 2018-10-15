@@ -1,20 +1,20 @@
-#include "log_getter.h"
+#include "git_log.h"
 
 #include "command_executor.h"
 
 #include <iostream>
 #include <fstream>
 
-LogGetter::LogGetter() :
+GitLog::GitLog() :
     m_command("cd /home/antonin/Documents/Qt/GitGui && git log")
 {
 }
 
-LogGetter::~LogGetter()
+GitLog::~GitLog()
 {
 }
 
-QString LogGetter::getBrutLog()
+QString GitLog::getBrutLog()
 {
     runLogCommand();
     std::ifstream logFileReader(NAME_REPONSE_COMMAND_FILE);
@@ -30,7 +30,7 @@ QString LogGetter::getBrutLog()
     return fileString;
 }
 
-void LogGetter::runLogCommand()
+void GitLog::runLogCommand()
 {
     executeCommand(m_command);
 }

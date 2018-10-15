@@ -1,4 +1,4 @@
-#include "git/status_getter.h"
+#include "git/git_status.h"
 #include "main_window.h"
 
 #include <QApplication>

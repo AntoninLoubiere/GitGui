@@ -1,33 +1,33 @@
 #include "git.h"
 
-#include "log_getter.h"
-#include "status_getter.h"
-#include "branch_getter.h"
+#include "git_log.h"
+#include "git_status.h"
+#include "git_branch.h"
 
 #include <QDir>
 
 
 
 Git::Git() :
-    m_logGetter(),
-    m_statusGetter(),
-    m_branchGetter()
+    m_gitLog(),
+    m_gitStatus(),
+    m_gitBranch()
 {
 }
 
 QString Git::getBrutLog()
 {
-    return m_logGetter.getBrutLog();
+    return m_gitLog.getBrutLog();
 }
 
 QString Git::getBrutStatus()
 {
-    return m_statusGetter.getBrutStatus();
+    return m_gitStatus.getBrutStatus();
 }
 
 QString Git::getBrutBranch()
 {
-    return m_branchGetter.getBrutBranch();
+    return m_gitBranch.getBrutBranch();
 }
 
 // setter
@@ -44,19 +44,19 @@ void Git::setDir(const QString& pathGitDir)
 
 // getter
 
-LogGetter* Git::logGetter()
+GitLog* Git::gitLog()
 {
-    return &m_logGetter;
+    return &m_gitLog;
 }
 
-StatusGetter* Git::statusGetter()
+GitStatus* Git::gitStatus()
 {
-    return  &m_statusGetter;
+    return  &m_gitStatus;
 }
 
-BranchGetter* Git::branchGetter()
+GitBranch* Git::gitBranch()
 {
-    return  &m_branchGetter;
+    return  &m_gitBranch;
 }
 
 QDir Git::gitDir()

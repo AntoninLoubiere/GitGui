@@ -4,11 +4,11 @@
 #include <QString>
 #include "command_executor.h"
 
-class StatusGetter : CommandExecutor
+class GitStatus : CommandExecutor
 {
 public:
-    StatusGetter();
-    virtual ~StatusGetter();
+    GitStatus();
+    virtual ~GitStatus();
 
     QString getBrutStatus();
 

@@ -5,11 +5,11 @@
 
 #include "command_executor.h"
 
-class LogGetter : CommandExecutor
+class GitLog : CommandExecutor
 {
 public:
-    LogGetter();
-    virtual ~LogGetter();
+    GitLog();
+    virtual ~GitLog();
 
     QString getBrutLog();
 

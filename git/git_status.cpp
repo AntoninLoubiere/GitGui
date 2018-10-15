@@ -1,4 +1,4 @@
-#include "status_getter.h"
+#include "git_status.h"
 
 #include "command_executor.h"
 
@@ -6,23 +6,23 @@
 #include <iostream>
 #include <string>
 
-StatusGetter::StatusGetter():
+GitStatus::GitStatus():
     m_command("cd /home/antonin/Documents/Qt/GitGui && git status")
 {
 
 }
 
-StatusGetter::~StatusGetter()
+GitStatus::~GitStatus()
 {
 
 }
 
-void StatusGetter::runStatusCommand()
+void GitStatus::runStatusCommand()
 {
     executeCommand(m_command);
 }
 
-QString StatusGetter::getBrutStatus()
+QString GitStatus::getBrutStatus()
 {
     runStatusCommand();
     std::ifstream statutFileReader(NAME_REPONSE_COMMAND_FILE);
