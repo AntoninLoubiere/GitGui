@@ -39,8 +39,7 @@ HEADERS += \
     git/git.h \
     git/git_branch.h \
     git/git_log.h \
-    git/git_status.h \
-    include_list.h
+    git/git_status.h
 
 
 FORMS += \

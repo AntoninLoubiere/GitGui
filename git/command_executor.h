@@ -2,7 +2,7 @@
 #define COMMANDEXECUTOR_H
 
 #include <QString>
-class Git;
+class Git; // To remove cyclique inclusion
 
 #define NAME_REPONSE_COMMAND_FILE "reponse.txt"
 
