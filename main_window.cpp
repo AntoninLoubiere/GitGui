@@ -20,7 +20,7 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     m_ui(new Ui::MainWindow),
-    m_git()
+    m_git(QDir("/home/antonin/Documents/Qt/GitGui"))
 {
     m_ui->setupUi(this);
 
@@ -42,12 +42,15 @@ void MainWindow::connectWidget()
 
     connect(m_ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(testIfDoUpdate()));
 
-    // buttons
-    connect(m_ui->chooseFileAddButton, SIGNAL(clicked()), this, SLOT(onChooseFileAddButtonClicked()));
-
-    connect(m_ui->chooseFileAddLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateChooseFileAddLabelColor()));
+    connectWidgetAddTab();
 }
 
+void MainWindow::connectWidgetAddTab()
+{
+    connect(m_ui->chooseFileAddButton, SIGNAL(clicked()), this, SLOT(onChooseFileAddButtonClicked()));
+    connect(m_ui->chooseFileAddLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateChooseFileAddLabelColor()));
+    connect(m_ui->addFileAddButton, SIGNAL(clicked()), this, SLOT(onAddFileInGitIndex()));
+}
 
 void MainWindow::updateGitDirectory()
 {
@@ -151,4 +154,11 @@ void MainWindow::updateChooseFileAddLabelColor()
         m_ui->chooseFileAddLineEdit->setStyleSheet("color: #CC0000");
         m_ui->addFileAddButton->setEnabled(false);
     }
+}
+
+// ========== Slot add tab ========== //
+
+void MainWindow::onAddFileInGitIndex()
+{
+    m_git.addFileInGitIndex(m_ui->chooseFileAddLineEdit->text());
 }

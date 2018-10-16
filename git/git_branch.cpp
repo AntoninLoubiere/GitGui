@@ -7,7 +7,7 @@
 
 GitBranch::GitBranch(Git *git) :
     CommandExecutor (git),
-    m_command("cd /home/antonin/Documents/Qt/GitGui && git branch")
+    m_command("git branch")
 {
 }
 

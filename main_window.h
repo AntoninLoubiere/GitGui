@@ -36,13 +36,19 @@ public slots:
 
     void testIfDoUpdate();
 
+    // ========== Add Tab ==========
+
     // buttons
     void onChooseFileAddButtonClicked();
 
     void updateChooseFileAddLabelColor();
 
+    void onAddFileInGitIndex();
+
 private:
     void connectWidget();
+
+    void connectWidgetAddTab();
 
     void updateGitDirectory();
 

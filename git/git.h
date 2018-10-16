@@ -1,19 +1,16 @@
-﻿#ifndef GIT_INCLUDE_H
-#define GIT_INCLUDE_H
+﻿#ifndef GIT_H
+#define GIT_H
 
 #include <QString>
 #include <QDir>
-
-class Git;
-class GitBranch;
-class GitLog;
-class GitStatus;
 
 #include "command_executor.h"
 
 #include "git_log.h"
 #include "git_status.h"
 #include "git_branch.h"
+
+
 class Git
 {
 public:
@@ -23,6 +20,8 @@ public:
     QString getBrutLog();
     QString getBrutStatus();
     QString getBrutBranch();
+
+    void addFileInGitIndex(QString relativeFilePath);
 
     // setter
     void setDir(const QDir &gitDir);

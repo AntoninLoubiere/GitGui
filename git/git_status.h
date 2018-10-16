@@ -11,6 +11,8 @@ public:
     GitStatus(Git *git);
     virtual ~GitStatus();
 
+    void addFileInGitIndex(QString relativeFilePath);
+
     QString getBrutStatus();
 
 private:

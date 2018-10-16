@@ -5,13 +5,23 @@
 #include "git_branch.h"
 
 #include <QDir>
+#include <QString>
 
 
 
 Git::Git() :
     m_gitLog(this),
     m_gitStatus(this),
-    m_gitBranch(this)
+    m_gitBranch(this),
+    m_gitDir()
+{
+}
+
+Git::Git(QDir dir) :
+    m_gitLog(this),
+    m_gitStatus(this),
+    m_gitBranch(this),
+    m_gitDir(dir)
 {
 }
 
@@ -28,6 +38,11 @@ QString Git::getBrutStatus()
 QString Git::getBrutBranch()
 {
     return m_gitBranch.getBrutBranch();
+}
+
+void Git::addFileInGitIndex(QString relativePath)
+{
+    m_gitStatus.addFileInGitIndex(relativePath);
 }
 
 // setter

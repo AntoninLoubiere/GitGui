@@ -6,9 +6,11 @@
 #include <iostream>
 #include <string>
 
+#include <QDebug>
+
 GitStatus::GitStatus(Git *git):
     CommandExecutor (git),
-    m_command("cd /home/antonin/Documents/Qt/GitGui && git status")
+    m_command("git status")
 {
 
 }
@@ -37,4 +39,9 @@ QString GitStatus::getBrutStatus()
     }
 
     return fileString;
+}
+
+void GitStatus::addFileInGitIndex(QString relativeFilePath)
+{
+    qDebug() << relativeFilePath;
 }

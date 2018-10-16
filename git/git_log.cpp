@@ -5,7 +5,7 @@
 
 GitLog::GitLog(Git *git):
     CommandExecutor(git),
-    m_command("cd /home/antonin/Documents/Qt/GitGui && git log")
+    m_command("git log")
 {
 }
 

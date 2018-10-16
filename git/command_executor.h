@@ -2,18 +2,21 @@
 #define COMMANDEXECUTOR_H
 
 #include <QString>
-class Git; // To remove cyclique inclusion
 
 #define NAME_REPONSE_COMMAND_FILE "reponse.txt"
 
+class Git;
 class CommandExecutor
 {
 public:
-    CommandExecutor(Git *git);
+    explicit CommandExecutor(Git *git);
     virtual ~CommandExecutor();
 
 protected:
     virtual void executeCommand(QString command);
+
+    Git *m_git;
+
 };
 
 #endif // COMMANDEXECUTOR_H
