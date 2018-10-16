@@ -5,6 +5,9 @@
 
 #include "command_executor.h"
 
+#define STATUS_COMMAND "git status"
+#define ADD_COMMAND "git add " // + file path
+
 class GitStatus : CommandExecutor
 {
 public:
@@ -14,11 +17,6 @@ public:
     void addFileInGitIndex(QString relativeFilePath);
 
     QString getBrutStatus();
-
-private:
-    void runStatusCommand();
-
-    const QString m_command;
 };
 
 #endif // STATUSGETTER_H

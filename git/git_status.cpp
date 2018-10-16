@@ -9,10 +9,8 @@
 #include <QDebug>
 
 GitStatus::GitStatus(Git *git):
-    CommandExecutor (git),
-    m_command("git status")
+    CommandExecutor (git)
 {
-
 }
 
 GitStatus::~GitStatus()
@@ -20,14 +18,9 @@ GitStatus::~GitStatus()
 
 }
 
-void GitStatus::runStatusCommand()
-{
-    executeCommand(m_command);
-}
-
 QString GitStatus::getBrutStatus()
 {
-    runStatusCommand();
+    executeCommand(STATUS_COMMAND);
     std::ifstream statutFileReader(NAME_REPONSE_COMMAND_FILE);
 
     QString fileString = "";
@@ -43,5 +36,5 @@ QString GitStatus::getBrutStatus()
 
 void GitStatus::addFileInGitIndex(QString relativeFilePath)
 {
-    qDebug() << relativeFilePath;
+    executeCommand(ADD_COMMAND + relativeFilePath);
 }

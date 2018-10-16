@@ -161,4 +161,6 @@ void MainWindow::updateChooseFileAddLabelColor()
 void MainWindow::onAddFileInGitIndex()
 {
     m_git.addFileInGitIndex(m_ui->chooseFileAddLineEdit->text());
+
+    m_ui->chooseFileAddLineEdit->setText("");
 }
