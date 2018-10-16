@@ -1,13 +1,19 @@
-﻿#ifndef GIT_H
-#define GIT_H
-
-#include "git_log.h"
-#include "git_status.h"
-#include "git_branch.h"
+﻿#ifndef GIT_INCLUDE_H
+#define GIT_INCLUDE_H
 
 #include <QString>
 #include <QDir>
 
+class Git;
+class GitBranch;
+class GitLog;
+class GitStatus;
+
+#include "command_executor.h"
+
+#include "git_log.h"
+#include "git_status.h"
+#include "git_branch.h"
 class Git
 {
 public:

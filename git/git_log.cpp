@@ -1,11 +1,10 @@
 #include "git_log.h"
 
-#include "command_executor.h"
-
 #include <iostream>
 #include <fstream>
 
-GitLog::GitLog() :
+GitLog::GitLog(Git *git):
+    CommandExecutor(git),
     m_command("cd /home/antonin/Documents/Qt/GitGui && git log")
 {
 }

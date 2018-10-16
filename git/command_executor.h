@@ -2,13 +2,14 @@
 #define COMMANDEXECUTOR_H
 
 #include <QString>
+class Git;
 
 #define NAME_REPONSE_COMMAND_FILE "reponse.txt"
 
 class CommandExecutor
 {
 public:
-    CommandExecutor();
+    CommandExecutor(Git *git);
     virtual ~CommandExecutor();
 
 protected:

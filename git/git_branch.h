@@ -1,14 +1,13 @@
 #ifndef BRANCH_GETTER_H
 #define BRANCH_GETTER_H
 
-#include "command_executor.h"
-
 #include <QString>
 
+#include "command_executor.h"
 class GitBranch : public CommandExecutor
 {
 public:
-    GitBranch();
+    GitBranch(Git *git);
     virtual ~GitBranch();
 
     QString getBrutBranch();

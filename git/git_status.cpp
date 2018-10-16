@@ -6,7 +6,8 @@
 #include <iostream>
 #include <string>
 
-GitStatus::GitStatus():
+GitStatus::GitStatus(Git *git):
+    CommandExecutor (git),
     m_command("cd /home/antonin/Documents/Qt/GitGui && git status")
 {
 

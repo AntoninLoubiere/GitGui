@@ -5,7 +5,8 @@
 #include <iostream>
 #include <fstream>
 
-GitBranch::GitBranch() :
+GitBranch::GitBranch(Git *git) :
+    CommandExecutor (git),
     m_command("cd /home/antonin/Documents/Qt/GitGui && git branch")
 {
 }

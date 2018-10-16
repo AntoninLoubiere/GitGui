@@ -1,10 +1,11 @@
-#include "git/git_status.h"
 #include "main_window.h"
 
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
 #include <QLibraryInfo>
+
+//#include "include_list.h"
 
 #ifdef Q_OS_UNIX
 int main(int argc, char *argv[])

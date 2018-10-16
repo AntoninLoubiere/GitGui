@@ -9,9 +9,9 @@
 
 
 Git::Git() :
-    m_gitLog(),
-    m_gitStatus(),
-    m_gitBranch()
+    m_gitLog(this),
+    m_gitStatus(this),
+    m_gitBranch(this)
 {
 }
 

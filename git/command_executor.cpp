@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-CommandExecutor::CommandExecutor()
+CommandExecutor::CommandExecutor(Git *git)
 {
 }
 

@@ -5,10 +5,9 @@
 
 #include "command_executor.h"
 
-class GitLog : CommandExecutor
-{
+class GitLog : public CommandExecutor{
 public:
-    GitLog();
+    GitLog(Git* git);
     virtual ~GitLog();
 
     QString getBrutLog();
