@@ -4,18 +4,16 @@
 #include <QString>
 
 #include "command_executor.h"
+
+#define BRUT_BRANCH_COMMAND "git branch"
+
 class GitBranch : public CommandExecutor
 {
 public:
     GitBranch(Git *git);
     virtual ~GitBranch();
 
-    QString getBrutBranch();
-
-private:
-    void runBranchCommand();
-
-    QString m_command;
+    QString getBrutBranch() const;
 };
 
 #endif // BRANCH_GETTER_H

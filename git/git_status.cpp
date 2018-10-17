@@ -18,9 +18,9 @@ GitStatus::~GitStatus()
 
 }
 
-QString GitStatus::getBrutStatus()
+QString GitStatus::getBrutStatus() const
 {
-    executeCommand(STATUS_COMMAND);
+    executeCommand(BRUT_STATUS_COMMAND);
     std::ifstream statutFileReader(NAME_REPONSE_COMMAND_FILE);
 
     QString fileString = "";
@@ -34,7 +34,7 @@ QString GitStatus::getBrutStatus()
     return fileString;
 }
 
-void GitStatus::addFileInGitIndex(QString relativeFilePath)
+void GitStatus::addFileInGitIndex(QString relativeFilePath) const
 {
     executeCommand(ADD_COMMAND + relativeFilePath);
 }

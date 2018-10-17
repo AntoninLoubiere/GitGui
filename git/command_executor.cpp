@@ -15,7 +15,7 @@ CommandExecutor::~CommandExecutor()
 
 }
 
-void CommandExecutor::executeCommand(QString command)
+void CommandExecutor::executeCommand(QString command) const
 {
 
     QString dirChange("cd ");

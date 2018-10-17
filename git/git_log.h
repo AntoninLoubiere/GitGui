@@ -5,17 +5,14 @@
 
 #include "command_executor.h"
 
+#define BRUT_LOG_COMMAND "git log"
+
 class GitLog : public CommandExecutor{
 public:
     GitLog(Git* git);
     virtual ~GitLog();
 
-    QString getBrutLog();
-
-private:
-    void runLogCommand();
-
-    QString m_command;
+    QString getBrutLog() const;
 };
 
 #endif // LOG_GETTER_H

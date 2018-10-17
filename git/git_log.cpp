@@ -4,8 +4,7 @@
 #include <fstream>
 
 GitLog::GitLog(Git *git):
-    CommandExecutor(git),
-    m_command("git log")
+    CommandExecutor(git)
 {
 }
 
@@ -13,9 +12,10 @@ GitLog::~GitLog()
 {
 }
 
-QString GitLog::getBrutLog()
+QString GitLog::getBrutLog() const
 {
-    runLogCommand();
+    executeCommand(BRUT_LOG_COMMAND);
+
     std::ifstream logFileReader(NAME_REPONSE_COMMAND_FILE);
 
     QString fileString = "";
@@ -29,7 +29,3 @@ QString GitLog::getBrutLog()
     return fileString;
 }
 
-void GitLog::runLogCommand()
-{
-    executeCommand(m_command);
-}

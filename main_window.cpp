@@ -20,7 +20,7 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     m_ui(new Ui::MainWindow),
-    m_git(QDir("/home/antonin/Documents/Qt/GitGui"))
+    m_git("/home/antonin/Documents/Qt/GitGui")
 {
     m_ui->setupUi(this);
 
@@ -91,7 +91,7 @@ QWidget* MainWindow::currentTabWidget() const
 
 QDir MainWindow::gitDirectory() const
 {
-    return m_gitDirectory;
+    return m_git.gitDir();
 }
 
 // slot

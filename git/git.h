@@ -1,4 +1,4 @@
-﻿#ifndef GIT_H
+﻿ #ifndef GIT_H
 #define GIT_H
 
 #include <QString>
@@ -15,13 +15,14 @@ class Git
 {
 public:
     Git();
+    Git(QString pathGitDir);
     Git(QDir pathGitDir);
 
-    QString getBrutLog();
-    QString getBrutStatus();
-    QString getBrutBranch();
+    QString getBrutLog() const;
+    QString getBrutStatus() const;
+    QString getBrutBranch() const;
 
-    void addFileInGitIndex(QString relativeFilePath);
+    void addFileInGitIndex(QString relativeFilePath) const;
 
     // setter
     void setDir(const QDir &gitDir);
@@ -32,7 +33,7 @@ public:
     GitStatus* gitStatus();
     GitBranch* gitBranch();
 
-    QDir gitDir();
+    QDir gitDir() const;
 
 private:    
     GitLog m_gitLog;

@@ -6,8 +6,7 @@
 #include <fstream>
 
 GitBranch::GitBranch(Git *git) :
-    CommandExecutor (git),
-    m_command("git branch")
+    CommandExecutor (git)
 {
 }
 
@@ -15,9 +14,10 @@ GitBranch::~GitBranch()
 {
 }
 
-QString GitBranch::getBrutBranch()
+QString GitBranch::getBrutBranch() const
 {
-    runBranchCommand();
+    executeCommand(BRUT_BRANCH_COMMAND);
+
     std::ifstream branchFileReader(NAME_REPONSE_COMMAND_FILE);
 
     QString fileString = "";
@@ -31,7 +31,3 @@ QString GitBranch::getBrutBranch()
     return fileString;
 }
 
-void GitBranch::runBranchCommand()
-{
-    executeCommand(m_command);
-}
