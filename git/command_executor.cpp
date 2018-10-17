@@ -12,21 +12,20 @@ CommandExecutor::CommandExecutor(Git *git) :
 
 CommandExecutor::~CommandExecutor()
 {
-
 }
 
 void CommandExecutor::executeCommand(QString command) const
 {
 
-    QString dirChange("cd ");
-    dirChange += m_git->gitDir().path();
+	QString dirChange("cd ");
+	dirChange += m_git->gitDir().path();
 
-    command += " > ";
-    command += QDir::currentPath();
-    command += "/";
-    command += NAME_REPONSE_COMMAND_FILE;
+	command += " > ";
+	command += QDir::currentPath();
+	command += "/";
+	command += NAME_REPONSE_COMMAND_FILE;
 
-    command = dirChange + " && " + command;
+	command = dirChange + " && " + command;
 
-    std::system(command.toStdString().c_str());
+	std::system(command.toStdString().c_str());
 }

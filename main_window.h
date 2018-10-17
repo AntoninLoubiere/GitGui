@@ -18,45 +18,45 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+	explicit MainWindow(QWidget *parent = nullptr);
+	~MainWindow();
 
-    // setter
-    void setGitDirectory(const QString& pathDirGit);
-    void setGitDirectory(const QDir& dirGit);
+	// setter
+	void setGitDirectory(const QString& pathDirGit);
+	void setGitDirectory(const QDir& dirGit);
 
-    // getter
-    QWidget* currentTabWidget() const;
-    QDir gitDirectory() const;
+	// getter
+	QWidget* currentTabWidget() const;
+	QDir gitDirectory() const;
 
 public slots:
-    void updateStatusText();
-    void updateLogText();
-    void updateBranchText();
+	void updateStatusText();
+	void updateLogText();
+	void updateBranchText();
 
-    void testIfDoUpdate();
+	void testIfDoUpdate();
 
-    // ========== Add Tab ==========
+	// ========== Add Tab ==========
 
-    // buttons
-    void onChooseFileAddButtonClicked();
+	// buttons
+	void onChooseFileAddButtonClicked();
 
-    void updateChooseFileAddLabelColor();
+	void updateChooseFileAddLabelColor();
 
-    void onAddFileInGitIndex();
+	void onAddFileInGitIndex();
 
 private:
-    void connectWidget();
+	void connectWidget();
 
-    void connectWidgetAddTab();
+	void connectWidgetAddTab();
 
-    void updateGitDirectory();
+	void updateGitDirectory();
 
-    Ui::MainWindow *m_ui;
+	Ui::MainWindow *m_ui;
 
-    QDir m_gitDirectory;
+	QDir m_gitDirectory;
 
-    Git m_git;
+	Git m_git;
 };
 
 #endif // MAINWINDOW_H

@@ -10,10 +10,10 @@
 class GitBranch : public CommandExecutor
 {
 public:
-    GitBranch(Git *git);
-    virtual ~GitBranch();
+	GitBranch(Git *git);
+	virtual ~GitBranch();
 
-    QString getBrutBranch() const;
+	QString getBrutBranch() const;
 };
 
 #endif // BRANCH_GETTER_H

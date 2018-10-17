@@ -9,10 +9,10 @@
 
 class GitLog : public CommandExecutor{
 public:
-    GitLog(Git* git);
-    virtual ~GitLog();
+	GitLog(Git* git);
+	virtual ~GitLog();
 
-    QString getBrutLog() const;
+	QString getBrutLog() const;
 };
 
 #endif // LOG_GETTER_H

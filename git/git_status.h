@@ -11,13 +11,12 @@
 class GitStatus : CommandExecutor
 {
 public:
-    GitStatus(Git *git);
-    virtual ~GitStatus();
+	GitStatus(Git *git);
+	virtual ~GitStatus();
 
-    void addFileInGitIndex(QString relativeFilePath) const;
+	void addFileInGitIndex(QString relativeFilePath) const;
 
-    QString getBrutStatus() const
-    ;
+	QString getBrutStatus() const;
 };
 
 #endif // STATUSGETTER_H

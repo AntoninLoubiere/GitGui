@@ -10,80 +10,79 @@
 
 
 Git::Git() :
-    m_gitLog(this),
-    m_gitStatus(this),
-    m_gitBranch(this),
-    m_gitDir()
+	m_gitLog(this),
+	m_gitStatus(this),
+	m_gitBranch(this),
+	m_gitDir()
 {
 }
 
 Git::Git(QString pathGitDir) :
-    m_gitLog(this),
-    m_gitStatus(this),
-    m_gitBranch(this),
-    m_gitDir(pathGitDir)
+	m_gitLog(this),
+	m_gitStatus(this),
+	m_gitBranch(this),
+	m_gitDir(pathGitDir)
 {
-
 }
 
 Git::Git(QDir dir) :
-    m_gitLog(this),
-    m_gitStatus(this),
-    m_gitBranch(this),
-    m_gitDir(dir)
+	m_gitLog(this),
+	m_gitStatus(this),
+	m_gitBranch(this),
+	m_gitDir(dir)
 {
 }
 
 QString Git::getBrutLog() const
 {
-    return m_gitLog.getBrutLog();
+	return m_gitLog.getBrutLog();
 }
 
 QString Git::getBrutStatus() const
 {
-    return m_gitStatus.getBrutStatus();
+	return m_gitStatus.getBrutStatus();
 }
 
 QString Git::getBrutBranch() const
 {
-    return m_gitBranch.getBrutBranch();
+	return m_gitBranch.getBrutBranch();
 }
 
 void Git::addFileInGitIndex(QString relativePath) const
 {
-    m_gitStatus.addFileInGitIndex(relativePath);
+	m_gitStatus.addFileInGitIndex(relativePath);
 }
 
 // setter
 
 void Git::setDir(const QDir &gitDir)
 {
-    m_gitDir = gitDir;
+	m_gitDir = gitDir;
 }
 
 void Git::setDir(const QString& pathGitDir)
 {
-    m_gitDir = QDir(pathGitDir);
+	m_gitDir = QDir(pathGitDir);
 }
 
 // getter
 
 GitLog* Git::gitLog()
 {
-    return &m_gitLog;
+	return &m_gitLog;
 }
 
 GitStatus* Git::gitStatus()
 {
-    return  &m_gitStatus;
+	return  &m_gitStatus;
 }
 
 GitBranch* Git::gitBranch()
 {
-    return  &m_gitBranch;
+	return  &m_gitBranch;
 }
 
 QDir Git::gitDir() const
 {
-    return m_gitDir;
+	return m_gitDir;
 }

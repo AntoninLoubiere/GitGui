@@ -9,8 +9,8 @@ class Git;
 class CommandExecutor
 {
 public:
-    explicit CommandExecutor(Git *git);
-    virtual ~CommandExecutor();
+	explicit CommandExecutor(Git *git);
+	virtual ~CommandExecutor();
 protected:
 	virtual void executeCommand(QString command) const;
 
