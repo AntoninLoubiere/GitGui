@@ -74,10 +74,10 @@
              <bool>false</bool>
             </property>
             <property name="toolTip">
-             <string>Ajoute un fichier.</string>
+             <string>Ajoute un fichier dans l'index de git.</string>
             </property>
             <property name="text">
-             <string>Ajouter un fichier:</string>
+             <string>Ajouter le fichier:</string>
             </property>
            </widget>
           </item>
@@ -97,7 +97,7 @@
           <item row="0" column="3">
            <widget class="QPushButton" name="chooseFileAddButton">
             <property name="toolTip">
-             <string>Chosir un fichier.</string>
+             <string>Chosit un fichier.</string>
             </property>
             <property name="text">
              <string>Choisir</string>
@@ -286,6 +286,19 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>addFileAddButton</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>chooseFileAddLineEdit</tabstop>
+  <tabstop>chooseFileAddButton</tabstop>
+  <tabstop>branchPlainTextEdit</tabstop>
+  <tabstop>updateLogButton</tabstop>
+  <tabstop>logPlainTextEdit</tabstop>
+  <tabstop>updateBranchButton</tabstop>
+  <tabstop>updateStatusButton</tabstop>
+  <tabstop>statusPlainTextEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
