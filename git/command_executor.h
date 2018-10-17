@@ -11,11 +11,10 @@ class CommandExecutor
 public:
     explicit CommandExecutor(Git *git);
     virtual ~CommandExecutor();
-
 protected:
-    virtual void executeCommand(QString command) const;
+	virtual void executeCommand(QString command) const;
 
-    Git *m_git;
+	Git *m_git;
 
 };
 
