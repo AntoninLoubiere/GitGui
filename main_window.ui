@@ -25,7 +25,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="addTab">
        <attribute name="title">
@@ -259,6 +259,11 @@
       <widget class="QWidget" name="mergeTab">
        <attribute name="title">
         <string>Merge</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="RemoteTab">
+       <attribute name="title">
+        <string/>
        </attribute>
       </widget>
      </widget>

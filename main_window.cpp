@@ -19,6 +19,8 @@
 
 #include <QMap>
 
+#include <QDebug>
+
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	m_ui(new Ui::MainWindow),
@@ -175,7 +177,13 @@ void MainWindow::updateChooseFileAddLabelColor()
 
 void MainWindow::onAddFileInGitIndex()
 {
-	m_git.addFileInGitIndex(m_ui->chooseFileAddLineEdit->text());
+	QString fileName = m_ui->chooseFileAddLineEdit->text();
+
+	int reponse = m_git.addFileInGitIndex(fileName);
+
+	if (reponse == 0) {
+		m_ui->statusBar->showMessage("Le fichier " + fileName + " a corectement été ajouté", 5000);
+	}
 
 	m_ui->chooseFileAddLineEdit->setText("");
 }

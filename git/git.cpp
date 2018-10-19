@@ -49,9 +49,9 @@ QString Git::getBrutBranch() const
 	return m_gitBranch.getBrutBranch();
 }
 
-void Git::addFileInGitIndex(QString relativePath) const
+int Git::addFileInGitIndex(QString relativePath) const
 {
-	m_gitStatus.addFileInGitIndex(relativePath);
+	return m_gitStatus.addFileInGitIndex(relativePath);
 }
 
 bool Git::isFileInDir(QString relativeFilePath) const

@@ -14,7 +14,7 @@ CommandExecutor::~CommandExecutor()
 {
 }
 
-void CommandExecutor::executeCommand(QString command) const
+int CommandExecutor::executeCommand(QString command) const
 {
 
 	QString dirChange("cd ");
@@ -27,5 +27,5 @@ void CommandExecutor::executeCommand(QString command) const
 
 	command = dirChange + " && " + command;
 
-	std::system(command.toStdString().c_str());
+	return std::system(command.toStdString().c_str());
 }

@@ -12,7 +12,7 @@ public:
 	explicit CommandExecutor(Git *git);
 	virtual ~CommandExecutor();
 protected:
-	virtual void executeCommand(QString command) const;
+	virtual int executeCommand(QString command) const;
 
 	Git *m_git;
 

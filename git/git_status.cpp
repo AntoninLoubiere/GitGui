@@ -33,9 +33,9 @@ QString GitStatus::getBrutStatus() const
 	return fileString;
 }
 
-void GitStatus::addFileInGitIndex(QString relativeFilePath) const
+int GitStatus::addFileInGitIndex(QString relativeFilePath) const
 {
-	executeCommand(ADD_COMMAND + relativeFilePath);
+	return executeCommand(ADD_COMMAND + relativeFilePath);
 }
 
 QMap<QString, QString> GitStatus::getListFile() const
