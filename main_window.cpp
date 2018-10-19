@@ -140,12 +140,13 @@ void MainWindow::updateBranchText()
 void MainWindow::onChooseFileAddButtonClicked()
 {
 	QString filePath(QFileDialog::getOpenFileName(this, QString(), m_gitDirectory.path()));
-	std::string filePathString(filePath.toStdString());
+	QFileInfo fileInfo(filePath);
 
-	if (filePath != "" && !m_git.isFileInDir(filePath)) {
+	if (filePath != "" && !filePath.contains(m_git.gitDir().path())) { // test if path of git
+																	  // is in the path of file
 		QString errorMessage;
 		errorMessage = "Le fichier: ";
-		errorMessage += QFileInfo(filePath).baseName();
+		errorMessage += fileInfo.baseName();
 		errorMessage += " n'est pas dans le dossier du projet (";
 		errorMessage += m_gitDirectory.path();
 		errorMessage += ") !";
@@ -182,7 +183,7 @@ void MainWindow::onAddFileInGitIndex()
 	int reponse = m_git.addFileInGitIndex(fileName);
 
 	if (reponse == 0) {
-		m_ui->statusBar->showMessage("Le fichier " + fileName + " a corectement été ajouté", 5000);
+		m_ui->statusBar->showMessage("Le fichier \"" + fileName + "\" a corectement été ajouté", 5000);
 	}
 
 	m_ui->chooseFileAddLineEdit->setText("");
