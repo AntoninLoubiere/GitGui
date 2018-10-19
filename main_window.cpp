@@ -163,7 +163,7 @@ void MainWindow::updateChooseFileAddLabelColor()
 	QString text = m_ui->chooseFileAddLineEdit->text();
 	QFileInfo fileChoose(m_gitDirectory.path() + "/" + text);
 
-	if (text != "" && fileChoose.exists()) {
+	if (text != "" && m_git.isFileInDir(text)) {
 		// file name is incorrect
 		m_ui->chooseFileAddLineEdit->setStyleSheet("color: #000000"); // black
 		m_ui->addFileAddButton->setEnabled(true);
