@@ -7,6 +7,7 @@
 #include <QDir>
 #include <QString>
 
+#include <QDebug>
 
 
 Git::Git() :
@@ -51,6 +52,18 @@ QString Git::getBrutBranch() const
 void Git::addFileInGitIndex(QString relativePath) const
 {
 	m_gitStatus.addFileInGitIndex(relativePath);
+}
+
+bool Git::isFileInDir(QString relativeFilePath) const
+{
+	QFileInfo check_file(m_gitDir.path() + "/" + relativeFilePath);
+	// check if file exists and if yes: Is it really a file and no directory?
+	if (check_file.exists() && check_file.isFile()) {
+		return true;
+	} else {
+		return false;
+	}
+
 }
 
 // setter

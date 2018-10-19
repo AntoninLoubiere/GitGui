@@ -24,6 +24,8 @@ public:
 
 	void addFileInGitIndex(QString relativeFilePath) const;
 
+	bool isFileInDir(QString relativeFilePath) const;
+
 	// setter
 	void setDir(const QDir &gitDir);
 	void setDir(const QString& pathGitDir);

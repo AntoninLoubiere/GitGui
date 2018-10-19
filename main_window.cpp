@@ -17,6 +17,8 @@
 
 #include <QApplication>
 
+#include <QMap>
+
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	m_ui(new Ui::MainWindow),
@@ -109,7 +111,18 @@ void MainWindow::testIfDoUpdate()
 
 void MainWindow::updateStatusText()
 {
-	m_ui->statusPlainTextEdit->document()->setPlainText(m_git.getBrutStatus());
+	// m_ui->statusPlainTextEdit->document()->setPlainText(m_git.getBrutStatus());
+
+	QMap<QString, QString> statusMap = m_git.gitStatus()->getListFile();
+
+	m_ui->statusPlainTextEdit->document()->setPlainText(""); // reset the text
+
+	for (QMap<QString, QString>::Iterator it = statusMap.begin(); it != statusMap.end(); it++) {
+		m_ui->statusPlainTextEdit->insertPlainText(it.key());
+		m_ui->statusPlainTextEdit->insertPlainText(" -> ");
+		m_ui->statusPlainTextEdit->insertPlainText(it.value());
+		m_ui->statusPlainTextEdit->insertPlainText("\n");
+	}
 }
 
 void MainWindow::updateLogText()
@@ -127,7 +140,7 @@ void MainWindow::onChooseFileAddButtonClicked()
 	QString filePath(QFileDialog::getOpenFileName(this, QString(), m_gitDirectory.path()));
 	std::string filePathString(filePath.toStdString());
 
-	if (filePath != "" && !filePath.contains(m_gitDirectory.path())) {
+	if (filePath != "" && !m_git.isFileInDir(filePath)) {
 		QString errorMessage;
 		errorMessage = "Le fichier: ";
 		errorMessage += QFileInfo(filePath).baseName();
@@ -148,10 +161,12 @@ void MainWindow::updateChooseFileAddLabelColor()
 	QFileInfo fileChoose(m_gitDirectory.path() + "/" + text);
 
 	if (text != "" && fileChoose.exists()) {
-		m_ui->chooseFileAddLineEdit->setStyleSheet("color: #000000");
+		// file name is incorrect
+		m_ui->chooseFileAddLineEdit->setStyleSheet("color: #000000"); // black
 		m_ui->addFileAddButton->setEnabled(true);
 	} else {
-		m_ui->chooseFileAddLineEdit->setStyleSheet("color: #CC0000");
+		// file name is correct
+		m_ui->chooseFileAddLineEdit->setStyleSheet("color: #CC0000"); // red
 		m_ui->addFileAddButton->setEnabled(false);
 	}
 }

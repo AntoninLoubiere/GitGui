@@ -2,6 +2,9 @@
 #define STATUSGETTER_H
 
 #include <QString>
+#include <QMap>
+
+#include <iostream>
 
 #include "command_executor.h"
 
@@ -17,6 +20,9 @@ public:
 	void addFileInGitIndex(QString relativeFilePath) const;
 
 	QString getBrutStatus() const;
+
+	QMap<QString, QString> getListFile() const;
+
 };
 
 #endif // STATUSGETTER_H
