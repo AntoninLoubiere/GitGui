@@ -16,11 +16,35 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="branchLabel">
-      <property name="text">
-       <string>Master</string>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Branche actuelle :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="branchLabel">
+        <property name="text">
+         <string>master</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
@@ -263,7 +287,7 @@
       </widget>
       <widget class="QWidget" name="RemoteTab">
        <attribute name="title">
-        <string/>
+        <string>Dépots distants</string>
        </attribute>
       </widget>
      </widget>
