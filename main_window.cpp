@@ -31,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	connectWidget();
 
 	setGitDirectory("/home/antonin/Documents/Qt/GitGui");
+
+	update();
 }
 
 MainWindow::~MainWindow()
@@ -44,7 +46,7 @@ void MainWindow::connectWidget()
 	connect(m_ui->updateLogButton, SIGNAL(clicked()), this, SLOT(updateLogText()));
 	connect(m_ui->updateBranchButton, SIGNAL(clicked()), this, SLOT(updateBranchText()));
 
-	connect(m_ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(testIfDoUpdate()));
+	connect(m_ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(update()));
 
 	connectWidgetAddTab();
 }
@@ -100,7 +102,7 @@ QDir MainWindow::gitDirectory() const
 
 // slot
 
-void MainWindow::testIfDoUpdate()
+void MainWindow::update()
 {
 	if (currentTabWidget() == m_ui->tabWidget->widget(2)) { // test if the current widget is the 2 widget (status)
 		updateStatusText();
@@ -109,6 +111,8 @@ void MainWindow::testIfDoUpdate()
 	} else if (currentTabWidget() == m_ui->tabWidget->widget((4))) { // idem but 4 is branch
 		updateBranchText();
 	}
+
+	updateLabelBranch();
 }
 
 void MainWindow::updateStatusText()
@@ -137,6 +141,11 @@ void MainWindow::updateBranchText()
 	m_ui->branchPlainTextEdit->document()->setPlainText(m_git.getBrutBranch());
 }
 
+void MainWindow::updateLabelBranch()
+{
+	m_ui->branchLabel->setText(m_git.getCurrentBranch());
+}
+
 void MainWindow::onChooseFileAddButtonClicked()
 {
 	QString filePath(QFileDialog::getOpenFileName(this, QString(), m_gitDirectory.path()));
@@ -161,14 +170,13 @@ void MainWindow::onChooseFileAddButtonClicked()
 void MainWindow::updateChooseFileAddLabelColor()
 {
 	QString text = m_ui->chooseFileAddLineEdit->text();
-	QFileInfo fileChoose(m_gitDirectory.path() + "/" + text);
 
 	if (text != "" && m_git.isFileInDir(text)) {
-		// file name is incorrect
+		// file name is correct
 		m_ui->chooseFileAddLineEdit->setStyleSheet("color: #000000"); // black
 		m_ui->addFileAddButton->setEnabled(true);
 	} else {
-		// file name is correct
+		// file name is incorrect
 		m_ui->chooseFileAddLineEdit->setStyleSheet("color: #CC0000"); // red
 		m_ui->addFileAddButton->setEnabled(false);
 	}

@@ -14,6 +14,8 @@ public:
 	virtual ~GitBranch();
 
 	QString getBrutBranch() const;
+
+	QString getCurrentBranch() const;
 };
 
 #endif // BRANCH_GETTER_H

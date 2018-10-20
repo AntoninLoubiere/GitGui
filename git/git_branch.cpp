@@ -31,3 +31,19 @@ QString GitBranch::getBrutBranch() const
 	return fileString;
 }
 
+QString GitBranch::getCurrentBranch() const
+{
+	executeCommand((BRUT_BRANCH_COMMAND));
+
+	std::ifstream branchFileReader(NAME_REPONSE_COMMAND_FILE);
+
+	std::string line = "";
+
+	while (std::getline(branchFileReader, line)) {
+		if (line[0] == '*' ) {
+			return QString().fromStdString(line.substr(2, line.size()));
+		}
+	}
+
+	return "";
+}

@@ -22,6 +22,9 @@ public:
 	QString getBrutStatus() const;
 	QString getBrutBranch() const;
 
+	QString getCurrentBranch() const;
+
+
 	int addFileInGitIndex(QString relativeFilePath) const;
 
 	bool isFileInDir(QString relativeFilePath) const;

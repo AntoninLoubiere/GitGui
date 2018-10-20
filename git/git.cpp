@@ -49,6 +49,11 @@ QString Git::getBrutBranch() const
 	return m_gitBranch.getBrutBranch();
 }
 
+QString Git::getCurrentBranch() const
+{
+	return m_gitBranch.getCurrentBranch();
+}
+
 int Git::addFileInGitIndex(QString relativePath) const
 {
 	return m_gitStatus.addFileInGitIndex(relativePath);

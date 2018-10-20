@@ -34,7 +34,9 @@ public slots:
 	void updateLogText();
 	void updateBranchText();
 
-	void testIfDoUpdate();
+	void updateLabelBranch();
+
+	void update();
 
 	// ========== Add Tab ==========
 
