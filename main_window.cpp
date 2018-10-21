@@ -147,9 +147,9 @@ void MainWindow::updateCommitTab()
 {
 	// remove all checkbox in the layout
 	for (CheckBoxFileStatus *checkBoxCurrent : m_listCheckboxCommit) {
-		qDebug() << checkBoxCurrent->filePath();
-		m_ui->listFileToCommit->removeWidget(checkBoxCurrent);
+		delete checkBoxCurrent;
 	}
+	m_ui->listFileToCommit->update();
 	m_listCheckboxCommit.clear();
 
 	QMap<QString, QString> statusMap = m_git.gitStatus()->getListFile();
