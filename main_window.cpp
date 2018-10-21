@@ -8,6 +8,7 @@
 
 #include <QWidget>
 #include <QTableWidget>
+#include <QTableWidgetItem>
 #include <QDir>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -28,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 	m_ui->setupUi(this);
 
-	connectWidget();
+	connectWidgets();
 
 	setGitDirectory("/home/antonin/Documents/Qt/GitGui");
 
@@ -40,25 +41,27 @@ MainWindow::~MainWindow()
 	delete m_ui;
 }
 
-void MainWindow::connectWidget()
+// connect
+
+void MainWindow::connectWidgets()
 {
-	connect(m_ui->updateStatusButton, SIGNAL(clicked()), this, SLOT(updateStatusText()));
-	connect(m_ui->updateLogButton, SIGNAL(clicked()), this, SLOT(updateLogText()));
-	connect(m_ui->updateBranchButton, SIGNAL(clicked()), this, SLOT(updateBranchText()));
+	connect(m_ui->updateStatusButton, SIGNAL(clicked()), this, SLOT(updateStatusTab()));
+	connect(m_ui->updateLogButton, SIGNAL(clicked()), this, SLOT(updateLogTab()));
+	connect(m_ui->updateBranchButton, SIGNAL(clicked()), this, SLOT(updateBranchTab()));
 
 	connect(m_ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(update()));
 
-	connectWidgetAddTab();
+	connectWidgetsAddTab();
 }
 
-void MainWindow::connectWidgetAddTab()
+void MainWindow::connectWidgetsAddTab()
 {
 	connect(m_ui->chooseFileAddButton, SIGNAL(clicked()), this, SLOT(onChooseFileAddButtonClicked()));
 	connect(m_ui->chooseFileAddLineEdit, SIGNAL(textChanged(QString)), this, SLOT(updateChooseFileAddLabelColor()));
 	connect(m_ui->addFileAddButton, SIGNAL(clicked()), this, SLOT(onAddFileInGitIndex()));
 }
 
-void MainWindow::updateGitDirectory()
+void MainWindow::changeGitDirectory()
 {
 	if (!m_gitDirectory.exists()) {
 		QString errorMessage;
@@ -78,14 +81,14 @@ void MainWindow::setGitDirectory(const QString& pathGitDir)
 {
 	m_gitDirectory = QDir(pathGitDir);
 
-	updateGitDirectory();
+	changeGitDirectory();
 }
 
 void MainWindow::setGitDirectory(const QDir& gitDir)
 {
 	m_gitDirectory = gitDir;
 
-	updateGitDirectory();
+	changeGitDirectory();
 }
 
 // getter
@@ -105,46 +108,66 @@ QDir MainWindow::gitDirectory() const
 void MainWindow::update()
 {
 	if (currentTabWidget() == m_ui->tabWidget->widget(2)) { // test if the current widget is the 2 widget (status)
-		updateStatusText();
+		updateStatusTab();
 	} else if (currentTabWidget() == m_ui->tabWidget->widget(3)) { // idem but 3 is log
-		updateLogText();
+		updateLogTab();
 	} else if (currentTabWidget() == m_ui->tabWidget->widget((4))) { // idem but 4 is branch
-		updateBranchText();
+		updateBranchTab();
+	} else if (currentTabWidget() == m_ui->tabWidget->widget(1)) { // idem but 1 is commit tab
+		updateCommitTab();
 	}
 
 	updateLabelBranch();
 }
 
-void MainWindow::updateStatusText()
+// ========== Update Slot ========== //
+
+void MainWindow::updateStatusTab()
 {
-	// m_ui->statusPlainTextEdit->document()->setPlainText(m_git.getBrutStatus());
-
-	QMap<QString, QString> statusMap = m_git.gitStatus()->getListFile();
-
-	m_ui->statusPlainTextEdit->document()->setPlainText(""); // reset the text
-
-	for (QMap<QString, QString>::Iterator it = statusMap.begin(); it != statusMap.end(); it++) {
-		m_ui->statusPlainTextEdit->insertPlainText(it.key());
-		m_ui->statusPlainTextEdit->insertPlainText(" -> ");
-		m_ui->statusPlainTextEdit->insertPlainText(it.value());
-		m_ui->statusPlainTextEdit->insertPlainText("\n");
-	}
+	// set text status
+	m_ui->statusPlainTextEdit->document()->setPlainText(m_git.getBrutStatus());
 }
 
-void MainWindow::updateLogText()
+void MainWindow::updateLogTab()
 {
+
+	// set text log
 	m_ui->logPlainTextEdit->document()->setPlainText(m_git.getBrutLog());
 }
 
-void MainWindow::updateBranchText()
+void MainWindow::updateBranchTab()
 {
+	// set text log
 	m_ui->branchPlainTextEdit->document()->setPlainText(m_git.getBrutBranch());
+}
+
+void MainWindow::updateCommitTab()
+{
+	QMap<QString, QString> statusMap = m_git.gitStatus()->getListFile();
+
+	m_ui->commitTableWidget->setRowCount(statusMap.size());
+
+	// set column size
+
+	m_ui->commitTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+
+
+	int currentLine = 0;
+
+	for (QMap<QString, QString>::Iterator it = statusMap.begin(); it != statusMap.end(); it++) {
+		m_ui->commitTableWidget->setItem(currentLine, 1, new QTableWidgetItem(it.key()));
+		m_ui->commitTableWidget->setItem(currentLine, 2, new QTableWidgetItem(it.value()));
+
+		currentLine++;
+	}
 }
 
 void MainWindow::updateLabelBranch()
 {
 	m_ui->branchLabel->setText(m_git.getCurrentBranch());
 }
+
+// ========== Slot add tab ========== //*
 
 void MainWindow::onChooseFileAddButtonClicked()
 {
@@ -182,8 +205,6 @@ void MainWindow::updateChooseFileAddLabelColor()
 	}
 }
 
-// ========== Slot add tab ========== //
-
 void MainWindow::onAddFileInGitIndex()
 {
 	QString fileName = m_ui->chooseFileAddLineEdit->text();
@@ -195,4 +216,11 @@ void MainWindow::onAddFileInGitIndex()
 	}
 
 	m_ui->chooseFileAddLineEdit->setText("");
+}
+
+// ========== Slot commit tab ========== //
+
+void MainWindow::updateListFileCommitTab()
+{
+
 }

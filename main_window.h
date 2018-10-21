@@ -30,9 +30,13 @@ public:
 	QDir gitDirectory() const;
 
 public slots:
-	void updateStatusText();
-	void updateLogText();
-	void updateBranchText();
+
+	// ========== Update Slot ========== //
+
+	void updateStatusTab();
+	void updateLogTab();
+	void updateBranchTab();
+	void updateCommitTab();
 
 	void updateLabelBranch();
 
@@ -47,12 +51,16 @@ public slots:
 
 	void onAddFileInGitIndex();
 
+	// ========== Slot add tab ========== //
+
+	void updateListFileCommitTab();
+
 private:
-	void connectWidget();
+	void connectWidgets();
 
-	void connectWidgetAddTab();
+	void connectWidgetsAddTab();
 
-	void updateGitDirectory();
+	void changeGitDirectory();
 
 	Ui::MainWindow *m_ui;
 
