@@ -3,11 +3,16 @@
 
 #include <QMainWindow>
 #include <QTabWidget>
+#include <QCheckBox>
 
 #include <QString>
 #include <QDir>
 
+#include <vector>
+
 #include "git/git.h"
+
+#include "checkbox_file_status.h"
 
 namespace Ui {
 class MainWindow;
@@ -56,6 +61,7 @@ public slots:
 	void updateListFileCommitTab();
 
 private:
+	// connect
 	void connectWidgets();
 
 	void connectWidgetsAddTab();
@@ -67,6 +73,8 @@ private:
 	QDir m_gitDirectory;
 
 	Git m_git;
+
+	std::vector<CheckBoxFileStatus*> m_listCheckboxCommit;
 };
 
 #endif // MAINWINDOW_H

@@ -31,7 +31,8 @@ SOURCES += \
     git/git.cpp \
     git/git_log.cpp \
     git/git_status.cpp \
-    git/git_branch.cpp
+    git/git_branch.cpp \
+    checkbox_file_status.cpp
 
 HEADERS += \
     git/command_executor.h \
@@ -39,7 +40,8 @@ HEADERS += \
     git/git.h \
     git/git_branch.h \
     git/git_log.h \
-    git/git_status.h
+    git/git_status.h \
+    checkbox_file_status.h
 
 
 FORMS += \

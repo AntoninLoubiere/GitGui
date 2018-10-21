@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -80,6 +83,9 @@
           </item>
           <item row="0" column="1">
            <widget class="QPushButton" name="pushButton">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
             <property name="toolTip">
              <string>Initialise git.</string>
             </property>
@@ -162,8 +168,15 @@
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
          <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="checkBox">
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Selectionner les fichiers: </string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="selectAll">
             <property name="text">
              <string>Selectionner tout</string>
             </property>
@@ -175,29 +188,26 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QTableWidget" name="commitTableWidget">
-            <property name="editTriggers">
-             <set>QAbstractItemView::NoEditTriggers</set>
+          <item row="3" column="0">
+           <widget class="QScrollArea" name="scrollArea">
+            <property name="widgetResizable">
+             <bool>true</bool>
             </property>
-            <attribute name="verticalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <column>
-             <property name="text">
-              <string/>
+            <widget class="QWidget" name="scrollAreaWidgetContents">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>622</width>
+               <height>103</height>
+              </rect>
              </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>FIchier</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>État</string>
-             </property>
-            </column>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <layout class="QVBoxLayout" name="listFileToCommit"/>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
          </layout>
@@ -232,6 +242,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="commitButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>Commit</string>
             </property>

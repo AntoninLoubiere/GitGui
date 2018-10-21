@@ -3,6 +3,8 @@
 
 #include "git/git.h"
 
+#include "checkbox_file_status.h"
+
 #include <system_error>
 #include <string>
 
@@ -143,20 +145,27 @@ void MainWindow::updateBranchTab()
 
 void MainWindow::updateCommitTab()
 {
+
+	// remove all checkbox in the layout
+	for (CheckBoxFileStatus *checkBoxCurrent : m_listCheckboxCommit) {
+		m_ui->listFileToCommit->removeWidget(checkBoxCurrent);
+	}
+	m_listCheckboxCommit.clear();
+
 	QMap<QString, QString> statusMap = m_git.gitStatus()->getListFile();
-
-	m_ui->commitTableWidget->setRowCount(statusMap.size());
-
-	// set column size
-
-	m_ui->commitTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-
 
 	int currentLine = 0;
 
 	for (QMap<QString, QString>::Iterator it = statusMap.begin(); it != statusMap.end(); it++) {
-		m_ui->commitTableWidget->setItem(currentLine, 1, new QTableWidgetItem(it.key()));
-		m_ui->commitTableWidget->setItem(currentLine, 2, new QTableWidgetItem(it.value()));
+		QString textQCheckBox;
+		textQCheckBox += it.key();
+		textQCheckBox += " (";
+		textQCheckBox += it.value();
+		textQCheckBox += ")";
+
+		CheckBoxFileStatus* checkBox = new CheckBoxFileStatus(it.key(), textQCheckBox ,m_ui->listFileToCommit->widget());
+
+		m_ui->listFileToCommit->addWidget(checkBox);
 
 		currentLine++;
 	}
