@@ -145,9 +145,9 @@ void MainWindow::updateBranchTab()
 
 void MainWindow::updateCommitTab()
 {
-
 	// remove all checkbox in the layout
 	for (CheckBoxFileStatus *checkBoxCurrent : m_listCheckboxCommit) {
+		qDebug() << checkBoxCurrent->filePath();
 		m_ui->listFileToCommit->removeWidget(checkBoxCurrent);
 	}
 	m_listCheckboxCommit.clear();
@@ -165,6 +165,7 @@ void MainWindow::updateCommitTab()
 
 		CheckBoxFileStatus* checkBox = new CheckBoxFileStatus(it.key(), textQCheckBox ,m_ui->listFileToCommit->widget());
 
+		m_listCheckboxCommit.push_back(checkBox);
 		m_ui->listFileToCommit->addWidget(checkBox);
 
 		currentLine++;
